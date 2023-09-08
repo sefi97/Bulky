@@ -15,10 +15,24 @@ namespace Bulky.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Company>().HasData(
+                new Company 
+                {  
+                    Id = 1,
+                    Name = "Dorlet",
+                    StreetAddress = "Minano",
+                    City = "Vitoria",
+                    State = "Euskadi",
+                    PostalCode = "1010101",
+                    PhoneNumber = "123456789"
+                });
 
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
